@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		7D32CDF22618EA000061B7C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32CDF12618EA000061B7C3 /* AppDelegate.swift */; };
 		7D32CDF42618EA000061B7C3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32CDF32618EA000061B7C3 /* SceneDelegate.swift */; };
-		7D32CDF62618EA000061B7C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32CDF52618EA000061B7C3 /* ViewController.swift */; };
+		7D32CDF62618EA000061B7C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D32CDF52618EA000061B7C3 /* LoginViewController.swift */; };
 		7D32CDF92618EA000061B7C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D32CDF72618EA000061B7C3 /* Main.storyboard */; };
 		7D32CDFB2618EA000061B7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D32CDFA2618EA000061B7C3 /* Assets.xcassets */; };
 		7D32CDFE2618EA000061B7C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D32CDFC2618EA000061B7C3 /* LaunchScreen.storyboard */; };
@@ -19,7 +19,7 @@
 		7D32CDEE2618EA000061B7C3 /* ProjetoEmpresas-MayaraOliveira.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ProjetoEmpresas-MayaraOliveira.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D32CDF12618EA000061B7C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D32CDF32618EA000061B7C3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7D32CDF52618EA000061B7C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7D32CDF52618EA000061B7C3 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7D32CDF82618EA000061B7C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7D32CDFA2618EA000061B7C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D32CDFD2618EA000061B7C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			children = (
 				7D32CE062618EA0A0061B7C3 /* Login */,
 				7D32CE082618EA110061B7C3 /* Home */,
-				7D32CE092618EA330061B7C3 /* EnterpriseDetails */,
+				7D32CE092618EA330061B7C3 /* CompanyAbout */,
 				7D32CDF72618EA000061B7C3 /* Main.storyboard */,
 				7D32CDFA2618EA000061B7C3 /* Assets.xcassets */,
 				7D32CDF12618EA000061B7C3 /* AppDelegate.swift */,
@@ -86,11 +86,11 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
-		7D32CE092618EA330061B7C3 /* EnterpriseDetails */ = {
+		7D32CE092618EA330061B7C3 /* CompanyAbout */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = EnterpriseDetails;
+			path = CompanyAbout;
 			sourceTree = "<group>";
 		};
 		7D32CE0A2618EA570061B7C3 /* Model */ = {
@@ -103,7 +103,7 @@
 		7D32CE0B2618EA5F0061B7C3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7D32CDF52618EA000061B7C3 /* ViewController.swift */,
+				7D32CDF52618EA000061B7C3 /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D32CDF62618EA000061B7C3 /* ViewController.swift in Sources */,
+				7D32CDF62618EA000061B7C3 /* LoginViewController.swift in Sources */,
 				7D32CDF22618EA000061B7C3 /* AppDelegate.swift in Sources */,
 				7D32CDF42618EA000061B7C3 /* SceneDelegate.swift in Sources */,
 			);
