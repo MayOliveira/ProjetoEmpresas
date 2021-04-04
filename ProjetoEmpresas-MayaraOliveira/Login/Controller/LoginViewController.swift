@@ -8,7 +8,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -16,6 +16,10 @@ class LoginViewController: UIViewController {
 
     override func loadView() {
         view = LoginView()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return.lightContent
     }
 }
 
