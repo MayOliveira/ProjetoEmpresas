@@ -149,7 +149,7 @@ class LoginView: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
     
-        self.backgroundColor = .white
+        self.setBackgroundColor(to: .white)
         addSubviews()
         setupConstraints()
     }
@@ -158,6 +158,7 @@ class LoginView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Actions
     @objc func signInAction(sender: UIButton) {
         print("Botão oi")
     }
