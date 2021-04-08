@@ -9,6 +9,7 @@ import UIKit
 
 class LoginView: UIView {
     
+    // Header
     private lazy var backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.image = .backgroundHome
@@ -42,6 +43,108 @@ class LoginView: UIView {
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         return welcomeLabel
     }()
+    
+    // Sign in
+    private lazy var loginStackView: UIStackView = {
+        let loginStackView = UIStackView()
+        loginStackView.axis = .vertical
+        loginStackView.distribution = .fillEqually
+        loginStackView.spacing = 16
+        loginStackView.backgroundColor = .clear
+        loginStackView.translatesAutoresizingMaskIntoConstraints = false
+        return loginStackView
+    }()
+
+    private lazy var emailStackView: UIStackView = {
+        let emailStackView = UIStackView()
+        emailStackView.axis = .vertical
+        emailStackView.spacing = 5
+        emailStackView.backgroundColor = .clear
+        emailStackView.translatesAutoresizingMaskIntoConstraints = false
+        return emailStackView
+    }()
+    
+    private lazy var passwordStackView: UIStackView = {
+        let passwordStackView = UIStackView()
+        passwordStackView.axis = .vertical
+        passwordStackView.spacing = 5
+        passwordStackView.backgroundColor = .clear
+        passwordStackView.translatesAutoresizingMaskIntoConstraints = false
+        return passwordStackView
+    }()
+    
+    private lazy var emailLabel: UILabel = {
+        let emailLabel = UILabel()
+        emailLabel.text = "Email"
+        emailLabel.textAlignment = .left
+        emailLabel.textColor = .grayText
+        emailLabel.font = UIFont.systemFont(ofSize: 14)
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        return emailLabel
+    }()
+    
+    private lazy var passwordLabel: UILabel = {
+        let passwordLabel = UILabel()
+        passwordLabel.text = "Senha"
+        passwordLabel.textAlignment = .left
+        passwordLabel.textColor = .grayText
+        passwordLabel.font = UIFont.systemFont(ofSize: 14)
+        passwordLabel.translatesAutoresizingMaskIntoConstraints = false
+        return passwordLabel
+    }()
+    
+    private lazy var emailView: UIView = {
+        let emailView = UIView()
+        emailView.backgroundColor = .graySecondary
+        emailView.layer.cornerRadius = 4
+        emailView.translatesAutoresizingMaskIntoConstraints = false
+        return emailView
+    }()
+    
+    private lazy var passwordView: UIView = {
+        let passwordView = UIView()
+        passwordView.backgroundColor = .graySecondary
+        passwordView.layer.cornerRadius = 4
+        passwordView.translatesAutoresizingMaskIntoConstraints = false
+        return passwordView
+    }()
+    
+    private lazy var loginTextField: UITextField = {
+        
+        let loginTextField = UITextField()
+        loginTextField.borderStyle = .none
+        loginTextField.backgroundColor = .clear
+        loginTextField.keyboardType = .emailAddress
+        loginTextField.tintColor = .pinkMain
+        loginTextField.translatesAutoresizingMaskIntoConstraints = false
+        return loginTextField
+    }()
+    
+    private lazy var passwordTextField: UITextField = {
+        
+        let passwordTextField = UITextField()
+        passwordTextField.borderStyle = .none
+        passwordTextField.backgroundColor = .clear
+        passwordTextField.keyboardType = .default
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.tintColor = .pinkMain
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        return passwordTextField
+    }()
+    
+    private lazy var signInButton: UIButton = {
+
+        let signInButton = UIButton()
+        signInButton.backgroundColor = .pinkMain
+        signInButton.layer.cornerRadius = 8
+        signInButton.setTitle("ENTRAR", for: .normal)
+        signInButton.setTitleColor(.white, for: .normal)
+        signInButton.setTitleColor(.gray, for: .highlighted)
+        signInButton.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
+        signInButton.addTarget(self, action: #selector(signInAction), for: .touchUpInside)
+        return signInButton
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -54,6 +157,10 @@ class LoginView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    @objc func signInAction(sender: UIButton) {
+        print("Botão oi")
+    }
 }
 
 extension LoginView {
@@ -64,14 +171,33 @@ extension LoginView {
         self.backgroundImage.addSubview(headerStackView)
         self.headerStackView.addArrangedSubview(logoImage)
         self.headerStackView.addArrangedSubview(welcomeLabel)
+        
+        self.addSubview(loginStackView)
+        self.loginStackView.addArrangedSubview(emailStackView)
+        self.loginStackView.addArrangedSubview(passwordStackView)
+        self.emailStackView.addArrangedSubview(emailLabel)
+        self.emailStackView.addArrangedSubview(emailView)
+        self.emailView.addSubview(loginTextField)
+        self.passwordStackView.addArrangedSubview(passwordLabel)
+        self.passwordStackView.addArrangedSubview(passwordView)
+        self.passwordView.addSubview(passwordTextField)
+       
+        self.addSubview(signInButton)
     }
     
     // MARK: Setup Constraints
     func setupConstraints() {
         setupBackgroundImageConstraints()
         setupHeaderStackViewConstraints()
+        setupLoginStackViewConstraints()
+        setupEmailViewConstraints()
+        setupPasswordViewConstraints()
+        setupLoginTextFieldConstraints()
+        setupPasswordTextFieldConstraints()
+        setupSignInButtonConstraints()
     }
     
+    // Header
     func setupBackgroundImageConstraints() {
         backgroundImage.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         backgroundImage.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
@@ -84,5 +210,41 @@ extension LoginView {
         headerStackView.rightAnchor.constraint(equalTo: self.backgroundImage.rightAnchor, constant: -20).isActive = true
         headerStackView.leftAnchor.constraint(equalTo: self.backgroundImage.leftAnchor, constant: 20).isActive = true
         headerStackView.centerYAnchor.constraint(equalTo: self.backgroundImage.centerYAnchor).isActive = true
+    }
+    
+    // Sign in
+    func setupLoginStackViewConstraints() {
+        loginStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        loginStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        loginStackView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
+    
+    func setupEmailViewConstraints() {
+        emailView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    }
+    
+    func setupPasswordViewConstraints() {
+        passwordView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    }
+    
+    func setupLoginTextFieldConstraints() {
+        loginTextField.rightAnchor.constraint(equalTo: self.emailView.rightAnchor, constant: -12).isActive = true
+        loginTextField.leftAnchor.constraint(equalTo: self.emailView.leftAnchor, constant: 12).isActive = true
+        loginTextField.topAnchor.constraint(equalTo: self.emailView.topAnchor, constant: 5).isActive = true
+        loginTextField.bottomAnchor.constraint(equalTo: self.emailView.bottomAnchor, constant: -5).isActive = true
+    }
+    
+    func setupPasswordTextFieldConstraints() {
+        passwordTextField.rightAnchor.constraint(equalTo: self.passwordView.rightAnchor, constant: -12).isActive = true
+        passwordTextField.leftAnchor.constraint(equalTo: self.passwordView.leftAnchor, constant: 12).isActive = true
+        passwordTextField.topAnchor.constraint(equalTo: self.passwordView.topAnchor, constant: 5).isActive = true
+        passwordTextField.bottomAnchor.constraint(equalTo: self.passwordView.bottomAnchor, constant: -5).isActive = true
+    }
+    
+    func setupSignInButtonConstraints() {
+        signInButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -40).isActive = true
+        signInButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 40).isActive = true
+        signInButton.topAnchor.constraint(equalTo: self.loginStackView.bottomAnchor, constant: 40).isActive = true
+        signInButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
 }
