@@ -62,42 +62,15 @@
 		7D32CDF02618EA000061B7C3 /* ProjetoEmpresas-MayaraOliveira */ = {
 			isa = PBXGroup;
 			children = (
-				7DE51BFF26193ABE0025D313 /* Support */,
-				7D32CE062618EA0A0061B7C3 /* Login */,
-				7D32CE082618EA110061B7C3 /* Home */,
-				7D32CE092618EA330061B7C3 /* CompanyAbout */,
-				7D32CDF72618EA000061B7C3 /* Main.storyboard */,
-				7D32CDFA2618EA000061B7C3 /* Assets.xcassets */,
-				7D32CDF12618EA000061B7C3 /* AppDelegate.swift */,
-				7D32CDF32618EA000061B7C3 /* SceneDelegate.swift */,
-				7D32CDFC2618EA000061B7C3 /* LaunchScreen.storyboard */,
-				7D32CDFF2618EA000061B7C3 /* Info.plist */,
-			);
-			path = "ProjetoEmpresas-MayaraOliveira";
-			sourceTree = "<group>";
-		};
-		7D32CE062618EA0A0061B7C3 /* Login */ = {
-			isa = PBXGroup;
-			children = (
 				7D32CE0A2618EA570061B7C3 /* Model */,
 				7D32CE0C2618EA6A0061B7C3 /* View */,
 				7D32CE0B2618EA5F0061B7C3 /* Controller */,
+				7DE51BFF26193ABE0025D313 /* Supporting Extensions */,
+				7DEB30D5261F1AE8000602CE /* Resources */,
+				7DEB30D3261F1AA5000602CE /* System Delegate */,
+				7DEB30D6261F1B12000602CE /* Supporting Files */,
 			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		7D32CE082618EA110061B7C3 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		7D32CE092618EA330061B7C3 /* CompanyAbout */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CompanyAbout;
+			path = "ProjetoEmpresas-MayaraOliveira";
 			sourceTree = "<group>";
 		};
 		7D32CE0A2618EA570061B7C3 /* Model */ = {
@@ -118,18 +91,45 @@
 		7D32CE0C2618EA6A0061B7C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7D32CDF72618EA000061B7C3 /* Main.storyboard */,
 				7DE51BF926192D560025D313 /* LoginView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		7DE51BFF26193ABE0025D313 /* Support */ = {
+		7DE51BFF26193ABE0025D313 /* Supporting Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				7DE51BFC261932BE0025D313 /* ColorExtension.swift */,
 				7DE51C0026193AEF0025D313 /* ImageExtension.swift */,
 			);
-			path = Support;
+			path = "Supporting Extensions";
+			sourceTree = "<group>";
+		};
+		7DEB30D3261F1AA5000602CE /* System Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				7D32CDF12618EA000061B7C3 /* AppDelegate.swift */,
+				7D32CDF32618EA000061B7C3 /* SceneDelegate.swift */,
+			);
+			path = "System Delegate";
+			sourceTree = "<group>";
+		};
+		7DEB30D5261F1AE8000602CE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7D32CDFA2618EA000061B7C3 /* Assets.xcassets */,
+				7D32CDFC2618EA000061B7C3 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		7DEB30D6261F1B12000602CE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7D32CDFF2618EA000061B7C3 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,7 +356,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58RN6U59UJ;
-				INFOPLIST_FILE = "ProjetoEmpresas-MayaraOliveira/Info.plist";
+				INFOPLIST_FILE = "ProjetoEmpresas-MayaraOliveira/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -375,7 +375,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 58RN6U59UJ;
-				INFOPLIST_FILE = "ProjetoEmpresas-MayaraOliveira/Info.plist";
+				INFOPLIST_FILE = "ProjetoEmpresas-MayaraOliveira/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
