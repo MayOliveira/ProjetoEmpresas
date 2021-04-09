@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		7DE51BFD261932BE0025D313 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE51BFC261932BE0025D313 /* ColorExtension.swift */; };
 		7DE51C0126193AEF0025D313 /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DE51C0026193AEF0025D313 /* ImageExtension.swift */; };
 		7DFEC3CB261F323C0070BD59 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DFEC3CA261F323C0070BD59 /* ViewExtension.swift */; };
+		9C10BB42788ED5EF5D821DFE /* Pods_ProjetoEmpresas_MayaraOliveira.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACBD1AE25BCBF197449ECD0 /* Pods_ProjetoEmpresas_MayaraOliveira.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,9 @@
 		7DE51BFC261932BE0025D313 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		7DE51C0026193AEF0025D313 /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
 		7DFEC3CA261F323C0070BD59 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		AE0C485E496A82252A1928F9 /* Pods-ProjetoEmpresas-MayaraOliveira.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoEmpresas-MayaraOliveira.release.xcconfig"; path = "Target Support Files/Pods-ProjetoEmpresas-MayaraOliveira/Pods-ProjetoEmpresas-MayaraOliveira.release.xcconfig"; sourceTree = "<group>"; };
+		CACBD1AE25BCBF197449ECD0 /* Pods_ProjetoEmpresas_MayaraOliveira.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjetoEmpresas_MayaraOliveira.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC3F6AA9BA353528FC2641FB /* Pods-ProjetoEmpresas-MayaraOliveira.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjetoEmpresas-MayaraOliveira.debug.xcconfig"; path = "Target Support Files/Pods-ProjetoEmpresas-MayaraOliveira/Pods-ProjetoEmpresas-MayaraOliveira.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C10BB42788ED5EF5D821DFE /* Pods_ProjetoEmpresas_MayaraOliveira.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CA2A75DE0DA11A541D3BAB0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CACBD1AE25BCBF197449ECD0 /* Pods_ProjetoEmpresas_MayaraOliveira.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7D32CDE52618E9FF0061B7C3 = {
 			isa = PBXGroup;
 			children = (
 				7D32CDF02618EA000061B7C3 /* ProjetoEmpresas-MayaraOliveira */,
 				7D32CDEF2618EA000061B7C3 /* Products */,
+				D4AE78A8EE3DEEF04BBF7103 /* Pods */,
+				5CA2A75DE0DA11A541D3BAB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -135,6 +150,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D4AE78A8EE3DEEF04BBF7103 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CC3F6AA9BA353528FC2641FB /* Pods-ProjetoEmpresas-MayaraOliveira.debug.xcconfig */,
+				AE0C485E496A82252A1928F9 /* Pods-ProjetoEmpresas-MayaraOliveira.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -142,9 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7D32CE022618EA000061B7C3 /* Build configuration list for PBXNativeTarget "ProjetoEmpresas-MayaraOliveira" */;
 			buildPhases = (
+				02AED3139EED1AF6A89E2437 /* [CP] Check Pods Manifest.lock */,
+				7D9463A02620090600DCC9AB /* ShellScript */,
 				7D32CDEA2618E9FF0061B7C3 /* Sources */,
 				7D32CDEB2618E9FF0061B7C3 /* Frameworks */,
 				7D32CDEC2618E9FF0061B7C3 /* Resources */,
+				E0569A3946B0B97E2F050F27 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +226,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		02AED3139EED1AF6A89E2437 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProjetoEmpresas-MayaraOliveira-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7D9463A02620090600DCC9AB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		E0569A3946B0B97E2F050F27 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjetoEmpresas-MayaraOliveira/Pods-ProjetoEmpresas-MayaraOliveira-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProjetoEmpresas-MayaraOliveira/Pods-ProjetoEmpresas-MayaraOliveira-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProjetoEmpresas-MayaraOliveira/Pods-ProjetoEmpresas-MayaraOliveira-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7D32CDEA2618E9FF0061B7C3 /* Sources */ = {
@@ -355,6 +441,7 @@
 		};
 		7D32CE032618EA000061B7C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC3F6AA9BA353528FC2641FB /* Pods-ProjetoEmpresas-MayaraOliveira.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -374,6 +461,7 @@
 		};
 		7D32CE042618EA000061B7C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AE0C485E496A82252A1928F9 /* Pods-ProjetoEmpresas-MayaraOliveira.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

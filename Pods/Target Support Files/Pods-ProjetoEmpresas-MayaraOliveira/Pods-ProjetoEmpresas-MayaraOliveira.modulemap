@@ -1,0 +1,6 @@
+framework module Pods_ProjetoEmpresas_MayaraOliveira {
+  umbrella header "Pods-ProjetoEmpresas-MayaraOliveira-umbrella.h"
+
+  export *
+  module * { export * }
+}
