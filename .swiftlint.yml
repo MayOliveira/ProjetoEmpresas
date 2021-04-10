@@ -1,6 +1,6 @@
 disabled_rules: # rule identifiers to exclude from running
-  - colon
-  - comma
+#  - colon
+#  - comma
   - control_statement
   - trailing_whitespace
   - unused_optional_binding
@@ -12,7 +12,11 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Source/*/ExcludedFile.swift # Exclude files with a wildcard
 # rules that have both warning and error levels, can set just the warning level
 # implicitly
-line_length: 110
+line_length:
+  warning: 140
+  error: 280
+  ignores_comments: true
+  ignores_urls: true
 # they can set both implicitly with an array
 type_body_length:
   - 300 # warning
@@ -30,8 +34,8 @@ type_name:
     error: 50
   excluded: iPhone # excluded via string
 identifier_name:
-  min_length: # only min_length
-    error: 4 # only error
+  min_length: 4
+  max_length: 40
   excluded: # excluded via string array
     - id
     - URL
