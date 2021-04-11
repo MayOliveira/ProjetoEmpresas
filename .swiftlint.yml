@@ -27,8 +27,9 @@ type_name:
     error: 50
     
 identifier_name:
-  min_length: 4
+  min_length: 3
   max_length: 40
+  allowed_symbols: "_"
   excluded:
     - id
     - URL
