@@ -49,6 +49,17 @@ class SearchView: UIView {
         
         return searchTextField
     }()
+    
+    private lazy var noResultsLabel: UILabel = {
+        let noResultsLabel = UILabel()
+        noResultsLabel.text = "Nenhum resultado encontrado"
+        noResultsLabel.textAlignment = .center
+        noResultsLabel.textColor = .grayText
+        noResultsLabel.font = UIFont.systemFont(ofSize: 18)
+        noResultsLabel.isHidden = true
+        noResultsLabel.translatesAutoresizingMaskIntoConstraints = false
+        return noResultsLabel
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -73,6 +84,7 @@ extension SearchView {
         self.addSubview(searchView)
         self.searchView.addSubview(searchIcon)
         self.searchView.addSubview(searchTextField)
+        self.addSubview(noResultsLabel)
     }
     
     // MARK: Setup Constraints
@@ -81,6 +93,7 @@ extension SearchView {
         setupSearchViewConstraints()
         setupSearchIconConstraints()
         setupSearchTextFieldConstraints()
+        setupNoResultsLabelConstraints()
     }
     
     // Header
@@ -117,6 +130,11 @@ extension SearchView {
         searchTextField.topAnchor.constraint(equalTo: self.searchView.topAnchor, constant: 5).isActive = true
         searchTextField.bottomAnchor.constraint(equalTo: self.searchView.bottomAnchor, constant: -5).isActive = true
     }
+    
+    func setupNoResultsLabelConstraints() {
+        noResultsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        noResultsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+    }
 }
 
 // MARK: TextField
@@ -130,7 +148,8 @@ extension SearchView: UITextFieldDelegate {
           
             if let error = error { print(error) }
             guard let enterprises = enterprises?.enterprises else { return }
-            if enterprises.isEmpty { print("Nenhum resultado encontrado") }
+            
+            self.noResultsLabel.isHidden = !enterprises.isEmpty
             
             // reload data
         }
