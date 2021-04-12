@@ -40,4 +40,8 @@ extension UIImage {
     static var visible: UIImage {
         return UIImage(named: "visible") ?? UIImage()
     }
+    
+    static var searchBackground: UIImage {
+        return UIImage(named: "search_background") ?? UIImage()
+    }
 }
