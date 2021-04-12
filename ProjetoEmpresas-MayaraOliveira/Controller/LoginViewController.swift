@@ -14,13 +14,12 @@ class LoginViewController: UIViewController, CustomTeller {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let loginView = LoginView()
-        loginView.delegate = self
-        view = loginView
     }
 
     override func loadView() {
-        view = LoginView()
+        let loginView = LoginView()
+        loginView.delegate = self
+        view = loginView
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
