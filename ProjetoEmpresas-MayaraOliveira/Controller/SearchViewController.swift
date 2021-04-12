@@ -8,11 +8,16 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    private lazy var networking = Networking()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        networking.searchEnterprise(text: Search(enterpriseSearched: "z")) { (enterprises, error) in
+            print("AQUI")
+            print(enterprises?.enterprises.count as Any)
+        }
     }
     
     override func loadView() {

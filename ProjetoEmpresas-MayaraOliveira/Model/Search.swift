@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Search: Codable {
+struct Search: Decodable {
     var enterpriseSearched: String
 }
 
-struct SearchResult: Codable {
-    var enterprises: [String]
+struct SearchResult: Decodable {
+    var enterprises: [Enterprise]
 }
 
-struct Enterprise: Codable {
+struct Enterprise: Decodable {
     var id: Int
     var email_enterprise: String?
     var facebook: String?
@@ -33,7 +33,7 @@ struct Enterprise: Codable {
     var enterprise_type: EnterpriseType
 }
 
-struct EnterpriseType: Codable {
+struct EnterpriseType: Decodable {
     var id: Int
     var enterprise_type_name: String
 }
