@@ -98,7 +98,6 @@ class Networking {
             if let data = data {
         
                 let enterprises = try? JSONDecoder().decode(SearchResult.self, from: data)
-                
                 DispatchQueue.main.async { completion(enterprises, nil) }
             }
         }
