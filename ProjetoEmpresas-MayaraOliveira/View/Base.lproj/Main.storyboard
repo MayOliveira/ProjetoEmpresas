@@ -23,6 +23,40 @@
             </objects>
             <point key="canvasLocation" x="-145" y="94"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="TER-2V-uiJ">
+            <objects>
+                <viewController storyboardIdentifier="SearchViewController" id="VeP-3y-QOU" customClass="SearchViewController" customModule="ProjetoEmpresas_MayaraOliveira" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ex3-HN-CBQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dkl-OR-AIn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aS3-OB-1fg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Pg-sx-zdr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1794.2028985507247" y="82.366071428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="cuY-m4-u3X">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BRH-l5-qln" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z6W-hl-Pm5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VeP-3y-QOU" kind="relationship" relationship="rootViewController" id="h4Z-nS-Coh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fpl-Tc-DYR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="884.05797101449286" y="82.366071428571431"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

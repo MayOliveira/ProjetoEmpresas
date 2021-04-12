@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol CustomTeller: class {
+    func signInButtonClicked(_: UIButton)
+}
+
 class LoginView: UIView {
+    
+    weak var delegate: CustomTeller?
     
     // Header
     private lazy var backgroundImage: UIImageView = {
@@ -183,6 +189,7 @@ class LoginView: UIView {
       
             if success {
                 print("Ir pra outra tela")
+                self.delegate?.signInButtonClicked(sender)
             } else {
                 if let error = error { print(error.localizedDescription) }
                 self.emailView.layer.borderColor = UIColor.redError.cgColor

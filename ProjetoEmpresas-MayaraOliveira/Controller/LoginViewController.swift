@@ -7,17 +7,16 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, CustomTeller {
     
     private lazy var networking = Networking()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let defaults = UserDefaults.standard
-        let savedArray = defaults.object(forKey: "uid")
-        print("\n\n#Default")
-        print(savedArray as Any)
+        let loginView = LoginView()
+        loginView.delegate = self
+        view = loginView
     }
 
     override func loadView() {
@@ -26,5 +25,16 @@ class LoginViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return.lightContent
+    }
+    
+    func signInButtonClicked(_: UIButton) {
+
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let searchViewController = storyBoard
+                .instantiateViewController(withIdentifier: "SearchViewController")
+                as? SearchViewController else { return }
+        searchViewController.modalPresentationStyle = .fullScreen
+        
+        self.present(searchViewController, animated: true, completion: nil)
     }
 }
