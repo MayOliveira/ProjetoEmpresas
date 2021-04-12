@@ -9,6 +9,8 @@ import UIKit
 
 class SearchView: UIView {
     
+    private lazy var networking = Networking()
+    
     // Header
     private lazy var backgroundImage: UIImageView = {
         let backgroundImage = UIImageView()
@@ -54,12 +56,13 @@ class SearchView: UIView {
         self.setBackgroundColor(to: .white)
         addSubviews()
         setupConstraints()
+        
+        searchTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }
 
 extension SearchView {
@@ -113,5 +116,23 @@ extension SearchView {
         searchTextField.leftAnchor.constraint(equalTo: self.searchIcon.rightAnchor, constant: 15).isActive = true
         searchTextField.topAnchor.constraint(equalTo: self.searchView.topAnchor, constant: 5).isActive = true
         searchTextField.bottomAnchor.constraint(equalTo: self.searchView.bottomAnchor, constant: -5).isActive = true
+    }
+}
+
+// MARK: TextField
+extension SearchView: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        
+        guard let text = textField.text else { return }
+        
+        networking.searchEnterprise(text: Search(enterpriseSearched: text)) { (enterprises, error) in
+          
+            if let error = error { print(error) }
+            guard let enterprises = enterprises?.enterprises else { return }
+            if enterprises.isEmpty { print("Nenhum resultado encontrado") }
+            
+            // reload data
+        }
     }
 }
