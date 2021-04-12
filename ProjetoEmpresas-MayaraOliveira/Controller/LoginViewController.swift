@@ -15,9 +15,17 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let values = Companies(email: "testeapple@ioasys.com.br", password: "12341234")
+        let email = "testeapple@ioasys.com.br"
+        let password = "12341234"
+        
+        let values = Companies(email: email, password: password)
         
         networking.placeOrder(order: values)
+        
+        let defaults = UserDefaults.standard
+        let savedArray = defaults.object(forKey: "uid")
+        print("\n\n#Default")
+        print(savedArray as Any)
     }
 
     override func loadView() {
