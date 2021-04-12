@@ -97,6 +97,8 @@ class LoginView: UIView {
         let emailView = UIView()
         emailView.backgroundColor = .graySecondary
         emailView.layer.cornerRadius = 4
+        emailView.layer.borderWidth = 1
+        emailView.layer.borderColor = UIColor.graySecondary.cgColor
         emailView.translatesAutoresizingMaskIntoConstraints = false
         return emailView
     }()
@@ -105,6 +107,8 @@ class LoginView: UIView {
         let passwordView = UIView()
         passwordView.backgroundColor = .graySecondary
         passwordView.layer.cornerRadius = 4
+        passwordView.layer.borderWidth = 1
+        passwordView.layer.borderColor = UIColor.graySecondary.cgColor
         passwordView.translatesAutoresizingMaskIntoConstraints = false
         return passwordView
     }()
@@ -166,7 +170,7 @@ class LoginView: UIView {
     
     // MARK: Actions
     @objc func signInAction(sender: UIButton) {
-        print("Botão oi")
+       
         let networking = Networking()
         
         guard let email = emailTextField.text,
@@ -174,7 +178,17 @@ class LoginView: UIView {
         else { return }
         
         let values = Companies(email: email, password: password)
-        networking.placeOrder(order: values)
+        
+        networking.placeOrder(order: values) { success, error  in
+      
+            if success {
+                print("Ir pra outra tela")
+            } else {
+                if let error = error { print(error.localizedDescription) }
+                self.emailView.layer.borderColor = UIColor.redError.cgColor
+                self.passwordView.layer.borderColor = UIColor.redError.cgColor
+            }
+        }
     }
 }
 
@@ -269,8 +283,13 @@ extension LoginView: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == emailTextField {
             emailLabel.textColor = .pinkMain
+            emailView.layer.borderColor = UIColor.graySecondary.cgColor
+            passwordView.layer.borderColor = UIColor.graySecondary.cgColor
+            
         } else {
             passwordLabel.textColor = .pinkMain
+            emailView.layer.borderColor = UIColor.graySecondary.cgColor
+            passwordView.layer.borderColor = UIColor.graySecondary.cgColor
         }
     }
     

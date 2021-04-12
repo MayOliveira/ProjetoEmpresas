@@ -15,7 +15,7 @@ class Networking {
         case accessToken = "access-token"
     }
     
-    func placeOrder(order: Companies) {
+    func placeOrder(order: Companies, completion: @escaping (Bool, Error?) -> Void) {
         guard let encoded = try? JSONEncoder().encode(order) else {
             print("Failed to encode order")
             return
@@ -30,7 +30,10 @@ class Networking {
 
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
-            print(response as Any)
+            if let error = error {
+                DispatchQueue.main.async { completion(false, error) }
+                return
+            }
             
             if let response = response as? HTTPURLResponse {
                 
@@ -48,19 +51,13 @@ class Networking {
                 userDefaults.setValuesForKeys(headerDictionary)
             }
             
-            guard let data = data else {
-                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
-                return
-            }
-            
-            if let decodedOrder = try? JSONDecoder().decode(User.self, from: data) {
-                print(decodedOrder)
-                
-            } else {
-                print("Invalid response from server")
-            } 
-        }
+            if let data = data {
         
+                let decodedOrder = try? JSONDecoder().decode(User.self, from: data)
+                let success = decodedOrder?.success ?? false
+                DispatchQueue.main.async { completion(success, nil) }
+            }
+        }
         task.resume()
     }
 }
