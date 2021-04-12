@@ -183,9 +183,9 @@ class LoginView: UIView {
               let password = passwordTextField.text
         else { return }
         
-        let values = Companies(email: email, password: password)
+        let values = Login(email: email, password: password)
         
-        networking.placeOrder(order: values) { success, error  in
+        networking.login(order: values) { success, error  in
       
             if success {
                 print("Ir pra outra tela")

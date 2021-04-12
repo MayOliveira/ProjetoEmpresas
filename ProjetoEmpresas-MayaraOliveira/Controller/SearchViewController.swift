@@ -19,6 +19,10 @@ class SearchViewController: UIViewController {
         view = SearchView()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return.lightContent
+    }
+    
     /*
     // MARK: - Navigation
 

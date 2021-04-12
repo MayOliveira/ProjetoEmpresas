@@ -15,7 +15,7 @@ class Networking {
         case accessToken = "access-token"
     }
     
-    func placeOrder(order: Companies, completion: @escaping (Bool, Error?) -> Void) {
+    func login(order: Login, completion: @escaping (Bool, Error?) -> Void) {
         guard let encoded = try? JSONEncoder().encode(order) else {
             print("Failed to encode order")
             return

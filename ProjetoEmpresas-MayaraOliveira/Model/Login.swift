@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Companies: Codable {
+struct Login: Codable {
     var email: String
     var password: String
 }
