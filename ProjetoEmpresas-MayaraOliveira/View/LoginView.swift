@@ -109,15 +109,18 @@ class LoginView: UIView {
         return passwordView
     }()
     
-    private lazy var loginTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         
-        let loginTextField = UITextField()
-        loginTextField.borderStyle = .none
-        loginTextField.backgroundColor = .clear
-        loginTextField.keyboardType = .emailAddress
-        loginTextField.tintColor = .pinkMain
-        loginTextField.translatesAutoresizingMaskIntoConstraints = false
-        return loginTextField
+        let emailTextField = UITextField()
+        emailTextField.borderStyle = .none
+        emailTextField.backgroundColor = .clear
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
+        emailTextField.autocorrectionType = .no
+        emailTextField.tintColor = .pinkMain
+        emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        
+        return emailTextField
     }()
     
     private lazy var passwordTextField: UITextField = {
@@ -152,6 +155,9 @@ class LoginView: UIView {
         self.setBackgroundColor(to: .white)
         addSubviews()
         setupConstraints()
+        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -161,6 +167,14 @@ class LoginView: UIView {
     // MARK: Actions
     @objc func signInAction(sender: UIButton) {
         print("Botão oi")
+        let networking = Networking()
+        
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text
+        else { return }
+        
+        let values = Companies(email: email, password: password)
+        networking.placeOrder(order: values)
     }
 }
 
@@ -178,7 +192,7 @@ extension LoginView {
         self.loginStackView.addArrangedSubview(passwordStackView)
         self.emailStackView.addArrangedSubview(emailLabel)
         self.emailStackView.addArrangedSubview(emailView)
-        self.emailView.addSubview(loginTextField)
+        self.emailView.addSubview(emailTextField)
         self.passwordStackView.addArrangedSubview(passwordLabel)
         self.passwordStackView.addArrangedSubview(passwordView)
         self.passwordView.addSubview(passwordTextField)
@@ -193,7 +207,7 @@ extension LoginView {
         setupLoginStackViewConstraints()
         setupEmailViewConstraints()
         setupPasswordViewConstraints()
-        setupLoginTextFieldConstraints()
+        setupEmailTextFieldConstraints()
         setupPasswordTextFieldConstraints()
         setupSignInButtonConstraints()
     }
@@ -228,11 +242,11 @@ extension LoginView {
         passwordView.heightAnchor.constraint(equalToConstant: 48).isActive = true
     }
     
-    func setupLoginTextFieldConstraints() {
-        loginTextField.rightAnchor.constraint(equalTo: self.emailView.rightAnchor, constant: -12).isActive = true
-        loginTextField.leftAnchor.constraint(equalTo: self.emailView.leftAnchor, constant: 12).isActive = true
-        loginTextField.topAnchor.constraint(equalTo: self.emailView.topAnchor, constant: 5).isActive = true
-        loginTextField.bottomAnchor.constraint(equalTo: self.emailView.bottomAnchor, constant: -5).isActive = true
+    func setupEmailTextFieldConstraints() {
+        emailTextField.rightAnchor.constraint(equalTo: self.emailView.rightAnchor, constant: -12).isActive = true
+        emailTextField.leftAnchor.constraint(equalTo: self.emailView.leftAnchor, constant: 12).isActive = true
+        emailTextField.topAnchor.constraint(equalTo: self.emailView.topAnchor, constant: 5).isActive = true
+        emailTextField.bottomAnchor.constraint(equalTo: self.emailView.bottomAnchor, constant: -5).isActive = true
     }
     
     func setupPasswordTextFieldConstraints() {
@@ -247,5 +261,24 @@ extension LoginView {
         signInButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 40).isActive = true
         signInButton.topAnchor.constraint(equalTo: self.loginStackView.bottomAnchor, constant: 40).isActive = true
         signInButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    }
+}
+
+extension LoginView: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailLabel.textColor = .pinkMain
+        } else {
+            passwordLabel.textColor = .pinkMain
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == emailTextField {
+            emailLabel.textColor = .grayText
+        } else {
+            passwordLabel.textColor = .grayText
+        }
     }
 }
