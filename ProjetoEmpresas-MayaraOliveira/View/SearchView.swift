@@ -7,9 +7,21 @@
 
 import UIKit
 
+protocol EnterpriseDetailProtocol: class {
+    func showEnterpriseDetail(_ enterprise: Enterprise)
+}
+
 class SearchView: UIView {
     
     private lazy var networking = Networking()
+    
+    weak var delegate: EnterpriseDetailProtocol?
+    
+    private var enterprises: [Enterprise] = [] {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
     
     // Header
     private lazy var backgroundImage: UIImageView = {
@@ -46,7 +58,6 @@ class SearchView: UIView {
         searchTextField.tintColor = .pinkMain
         searchTextField.placeholder = "Pesquise por empresa"
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
-        
         return searchTextField
     }()
     
@@ -61,14 +72,26 @@ class SearchView: UIView {
         return noResultsLabel
     }()
 
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
     
         self.setBackgroundColor(to: .white)
         addSubviews()
         setupConstraints()
-        
+
         searchTextField.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     required init?(coder: NSCoder) {
@@ -85,6 +108,7 @@ extension SearchView {
         self.searchView.addSubview(searchIcon)
         self.searchView.addSubview(searchTextField)
         self.addSubview(noResultsLabel)
+        self.addSubview(tableView)
     }
     
     // MARK: Setup Constraints
@@ -94,6 +118,7 @@ extension SearchView {
         setupSearchIconConstraints()
         setupSearchTextFieldConstraints()
         setupNoResultsLabelConstraints()
+        setupTableViewConstraints()
     }
     
     // Header
@@ -135,6 +160,14 @@ extension SearchView {
         noResultsLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         noResultsLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
+    
+    func setupTableViewConstraints() {
+        
+        self.tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        self.tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        self.tableView.topAnchor.constraint(equalTo: self.searchView.bottomAnchor, constant: 16).isActive = true
+        self.tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
 }
 
 // MARK: TextField
@@ -151,7 +184,33 @@ extension SearchView: UITextFieldDelegate {
             
             self.noResultsLabel.isHidden = !enterprises.isEmpty
             
-            // reload data
+            self.setEnterprises(enterprises)
         }
+    }
+    
+    func setEnterprises(_ enterprises: [Enterprise]) {
+        self.enterprises = enterprises
+    }
+}
+
+extension SearchView: UITableViewDelegate, UITableViewDataSource {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.enterprises.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = self.enterprises[indexPath.row].enterprise_name
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        self.delegate?.showEnterpriseDetail(self.enterprises[indexPath.row])
     }
 }

@@ -34,10 +34,29 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="aS3-OB-1fg"/>
+                    <connections>
+                        <segue destination="Suh-YO-CsP" kind="show" identifier="EnterpriseDetailView" id="W4n-dJ-vCC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pg-sx-zdr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1794.2028985507247" y="82.366071428571431"/>
+        </scene>
+        <!--Enterprise Detail View Controller-->
+        <scene sceneID="tcu-zs-CP5">
+            <objects>
+                <viewController storyboardIdentifier="EnterpriseDetailView" id="Suh-YO-CsP" customClass="EnterpriseDetailViewController" customModule="ProjetoEmpresas_MayaraOliveira" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CuI-la-17g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="YF6-lM-5KD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N6K-GG-Mwm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tAP-hv-Mcu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2700" y="82"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="cuY-m4-u3X">

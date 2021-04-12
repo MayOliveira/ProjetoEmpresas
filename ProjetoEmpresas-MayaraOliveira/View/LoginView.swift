@@ -188,8 +188,8 @@ class LoginView: UIView {
         networking.login(order: values) { success, error  in
       
             if success {
-                print("Ir pra outra tela")
                 self.delegate?.signInButtonClicked(sender)
+                
             } else {
                 if let error = error { print(error.localizedDescription) }
                 self.emailView.layer.borderColor = UIColor.redError.cgColor

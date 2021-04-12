@@ -7,29 +7,49 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, EnterpriseDetailProtocol {
     
+    private var enterprise: Enterprise?
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+    
     }
     
     override func loadView() {
-        view = SearchView()
+        let searchView = SearchView()
+        searchView.delegate = self
+        view = searchView
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return.lightContent
     }
     
-    /*
-    // MARK: - Navigation
+    func showEnterpriseDetail(_ enterprise: Enterprise) {
+        self.enterprise = enterprise
+        performSegue(withIdentifier: "EnterpriseDetailView", sender: enterprise)
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EnterpriseDetailView" {
+            
+            let destinationController = segue.destination as? EnterpriseDetailViewController
+            let viewController = destinationController?.view as? EnterpriseDetailView
+            
+            // Enterprise name
+            guard let name = self.enterprise?.enterprise_name else { return }
+            viewController?.enterpriseName.text = name
+            
+            // Background image
+            let host = "https://empresas.ioasys.com.br"
+            guard let photo = self.enterprise?.photo else { return }
+            guard let url = URL(string: host + photo) else { return }
+            viewController?.backgroundImage.load(url: url)
+            
+            // Enterprise description
+            guard let description = self.enterprise?.description else { return }
+            viewController?.enterpriseDescription.text = description
+        }
+    }
 }
